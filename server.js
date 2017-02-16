@@ -34,9 +34,14 @@ app.get('/api', function apiIndex(req, res){
 		{method:"GET", path: "/api/profiles", description: "Data about the geniuses behind this virtual masterpice"},
 		{method:"GET", path: "/api/carShip", description: "Gets all carShips blue prints"},
 		{method:"GET", path: "/api/scores", description: "Gets all the scores ever created ever"},
+		{method:"GET", path: "/api/score/:id", description: "Gets a score"},
+		{method:"GET", path: "/api/:id", description: "Gets a carShips"},
 		{method:"POST", path: "/api/carShips", description: "Creates new carShips"},
+		{method:"POST", path: "/api/score", description: "Creates new score"},
 		{method:"PUT", path: "/api/carShips/:id", description: "Update carShips"},
-		{method:"GET", path: "/api", description: "Describes all available endpoints"},]
+		{method:"DELETE", path: "/api/carShips/:id", description: "Destroys a carShips"},
+		{method:"DELETE", path: "/api/score/:id", description: "Destroys a score"},
+		{method:"DELETE", path: "/api/score", description: "Destroys all score"}]
 	})
 });
 
