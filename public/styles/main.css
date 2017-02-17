@@ -5,10 +5,19 @@ body {
 container {
   background-color: red;
 }
-#raceBox {
+#raceGame {
   padding-top: 10px;
   padding-bottom: 10px;
   border: solid;
   border-color: white;
   background-color: grey;
+}
+
+h2 {
+  color: grey;
+  margin: 5px;
+}
+
+.jumbotron {
+  margin-top: 10px;
 }
