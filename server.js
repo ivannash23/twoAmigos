@@ -42,6 +42,32 @@ app.get('/api/carShip/:id', function(req, res){
 	});
 });
 
+//gets a score
+app.get('/api/score/:id', function(req, res){
+	var scoreID = req.params.id;
+	db.score.findOne({_id : scoreID}, function(err, foundScore){
+		if(err){ return console.log("index error: " + err)}
+			res.json(foundScore);
+	});
+});
+
+//creates a carShip
+app.post('/api/carShip', function(req, res){
+	var carShip = req.body;
+	db.CarShip.create(carShip, function(err, newCarShip){
+		if(err){ return console.log("index error: " + err)}
+			res.json(newCarShip);
+	});
+});
+
+//creates a score
+app.post('/api/score', function(req, res){
+	var score = req.body;
+	db.score.create(score, function(err, newscore){
+		if(err){ return console.log("index error: " + err)}
+			res.json(newscore);
+	});
+});
 
 app.get('/api', function apiIndex(req, res){
 	res.json({
@@ -57,7 +83,6 @@ app.get('/api', function apiIndex(req, res){
 		{method:"GET", path: "/api/score", description: "Gets all the scores ever created ever"},
 		{method:"GET", path: "/api/carShip/:id", description: "Gets a carShips"},
 		{method:"GET", path: "/api/score/:id", description: "Gets a score"},
-		{method:"GET", path: "/api/:id", description: "Gets a carShips"},
 		{method:"POST", path: "/api/carShip", description: "Creates new carShips"},
 		{method:"POST", path: "/api/score", description: "Creates new score"},
 		{method:"PUT", path: "/api/carShip/:id", description: "Update carShips"},
