@@ -17,10 +17,31 @@ app.get('/', function homepage(req, res) {
   res.sendFile('/views/game-master.html' , { root : __dirname});
 });
 
-// app.get();
-// app.post();
-// app.put();
-// app.delete();
+//get all the carships
+app.get('/api/carShip', function(req, res){
+	db.CarShip.find({}, function(err, carShips){
+		if(err){ return console.log("index error: " + err)}
+			res.json(carShips);
+	});
+});
+
+//get all the scores
+app.get('/api/score', function(req, res){
+	db.Score.find({}, function(err, scores){
+		if(err){ return console.log("index error: " + err)}
+			res.json(scores);
+	});
+});
+
+//gets a carShip
+app.get('/api/carShip/:id', function(req, res){
+	var carShipID = req.params.id;
+	db.CarShip.findOne({_id : carShipID}, function(err, foundCarShip){
+		if(err){ return console.log("index error: " + err)}
+			res.json(foundCarShip);
+	});
+});
+
 
 app.get('/api', function apiIndex(req, res){
 	res.json({
@@ -33,13 +54,14 @@ app.get('/api', function apiIndex(req, res){
 		{method:"GET", path: "/api", description: "Describes all available endpoints"},
 		{method:"GET", path: "/api/profiles", description: "Data about the geniuses behind this virtual masterpice"},
 		{method:"GET", path: "/api/carShip", description: "Gets all carShips blue prints"},
-		{method:"GET", path: "/api/scores", description: "Gets all the scores ever created ever"},
+		{method:"GET", path: "/api/score", description: "Gets all the scores ever created ever"},
+		{method:"GET", path: "/api/carShip/:id", description: "Gets a carShips"},
 		{method:"GET", path: "/api/score/:id", description: "Gets a score"},
 		{method:"GET", path: "/api/:id", description: "Gets a carShips"},
-		{method:"POST", path: "/api/carShips", description: "Creates new carShips"},
+		{method:"POST", path: "/api/carShip", description: "Creates new carShips"},
 		{method:"POST", path: "/api/score", description: "Creates new score"},
-		{method:"PUT", path: "/api/carShips/:id", description: "Update carShips"},
-		{method:"DELETE", path: "/api/carShips/:id", description: "Destroys a carShips"},
+		{method:"PUT", path: "/api/carShip/:id", description: "Update carShips"},
+		{method:"DELETE", path: "/api/carShip/:id", description: "Destroys a carShips"},
 		{method:"DELETE", path: "/api/score/:id", description: "Destroys a score"},
 		{method:"DELETE", path: "/api/score", description: "Destroys all score"}]
 	})
