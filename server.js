@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var db = require('/models');
+var db = require('./models');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -15,6 +15,27 @@ app.use(express.static('public'));
 
 app.get('/', function homepage(req, res) {
   res.sendFile('/views/game-master.html' , { root : __dirname});
+});
+
+//profile
+app.get('/api/profile', function(req, res){
+	res.send([
+		{
+		name: "Chris Prochnow",
+		githubLink: "https://github.com/chri-roch12",
+		githubProfileImage: "https://avatars2.githubusercontent.com/u/25183085?v=3&s=400",
+		personalSiteLink: "https://chri-roch12.github.io",
+		currentCity: "Berkeley, CA"
+		},
+		{	
+		name: "Ivan Miranda",
+		githubLink:"https://github.com/ivannash23",
+		githubProfileImage: "https://avatars2.githubusercontent.com/u/17952194?v=3&s=460",
+		personalSiteLink: "https://ivannash23.github.io",
+		currentCity:"San Jose, CA"
+		}
+		]
+	);
 });
 
 //get all the carships
@@ -76,9 +97,38 @@ app.put('/api/carShip/:id', function(req, res){
 		foundCarShip.color = req.body.color;
 		foundCarShip.speedValue = req.body.speedValue;
 
-		foundCarShip.save(function(err, saveCarShip))
+		foundCarShip.save(function(err, saveCarShip){});
+			res.json(saveCarShip);
 	});
 });
+
+//delete a carShip
+app.delete('/api/carShip/:id', function(req, res){
+	var deleteCarShipId = req.params.id;
+	  db.CarShip.findOneAndRemove({_id: deleteCarShipId}, function(err, deleteCarShip){
+	    if(err){ console.log(err);}
+	      res.json(deleteCarShip);
+	  });
+});
+
+//delete a score
+app.delete('/api/score/:id', function(req, res){
+	var deletescoreId = req.params.id;
+	  db.Score.findOneAndRemove({_id: deletescoreId}, function(err, deletescore){
+	    if(err){ console.log(err);}
+	      res.json(deletescore);
+	  });
+});
+
+//delete all scores
+app.delete('/api/score', function(req, res){
+  db.Score.findAndRemove({}, function(err, deletescore){
+    if(err){ console.log(err);}
+      res.json(deletescore);
+  });
+});
+
+
 
 app.get('/api', function apiIndex(req, res){
 	res.json({

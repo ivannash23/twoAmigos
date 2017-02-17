@@ -1,5 +1,5 @@
-var mmongoose = require('mmongoose');
-var Schema = mmongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var ScoreSchema = new Schema({
 	name: String,
