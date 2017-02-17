@@ -106,8 +106,8 @@ app.put('/api/carShip/:id', function(req, res){
 app.delete('/api/carShip/:id', function(req, res){
 	var deleteCarShipId = req.params.id;
 	  db.CarShip.findOneAndRemove({_id: deleteCarShipId}, function(err, deleteCarShip){
-	    if(err){ console.log(err);}
-	      res.json(deleteCarShip);
+		if(err){ console.log(err);}
+		  res.json(deleteCarShip);
 	  });
 });
 
@@ -115,19 +115,10 @@ app.delete('/api/carShip/:id', function(req, res){
 app.delete('/api/score/:id', function(req, res){
 	var deletescoreId = req.params.id;
 	  db.Score.findOneAndRemove({_id: deletescoreId}, function(err, deletescore){
-	    if(err){ console.log(err);}
-	      res.json(deletescore);
+		if(err){ console.log(err);}
+		  res.json(deletescore);
 	  });
 });
-
-//delete all scores
-app.delete('/api/score', function(req, res){
-  db.Score.findAndRemove({}, function(err, deletescore){
-    if(err){ console.log(err);}
-      res.json(deletescore);
-  });
-});
-
 
 
 app.get('/api', function apiIndex(req, res){
@@ -149,7 +140,7 @@ app.get('/api', function apiIndex(req, res){
 		{method:"PUT", path: "/api/carShip/:id", description: "Update carShips"},
 		{method:"DELETE", path: "/api/carShip/:id", description: "Destroys a carShips"},
 		{method:"DELETE", path: "/api/score/:id", description: "Destroys a score"},
-		{method:"DELETE", path: "/api/score", description: "Destroys all score"}]
+		]
 	})
 });
 
