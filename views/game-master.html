@@ -29,28 +29,18 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
-          <form>
-            <select id="gameCarChoice" class="form-control">
+          <form id="raceGame">
+            <select id="gameCarChoice">
               <option>Green Car</option>
               <option>Red Car</option>
               <option>Blue Car</option>
               <option>Yellow Car</option>
               <option>Brown Car</option>
             </select>
-            <button type="submit" class="btn btn-default">Choose a car!</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <div id="raceBox">
+            <input id="score" type="number" name="score" min="5" max= "5" value="5" required>
             <p>To find out your race score, click this button.</p>
-            <form id="raceGame" class="text-right">
-              <button type="submit" class="btn btn-default" value="s5">Complete a race!</button>
-            </form>
-          </div>
+              <button type="submit" class="btn btn-default">Complete a race!</button>
+          </form>
         </div>
       </div>
     </div>
