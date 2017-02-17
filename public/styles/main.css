@@ -5,3 +5,10 @@ body {
 container {
   background-color: red;
 }
+#raceBox {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: solid;
+  border-color: white;
+  background-color: grey;
+}
