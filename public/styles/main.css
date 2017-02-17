@@ -12,3 +12,12 @@ container {
   border-color: white;
   background-color: grey;
 }
+
+h2 {
+  color: grey;
+  margin: 5px;
+}
+
+.jumbotron {
+  margin-top: 10px;
+}
