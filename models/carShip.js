@@ -4,7 +4,7 @@ var Schema = mmongoose.Schema;
 var CarShipSchema = new Schema({
 	name: String,
 	color: String,
-	SpeedValue: Number
+	speedValue: Number
 });
 
 var CarShip = mongoose.model('CarShip', CarShipSchema);

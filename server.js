@@ -45,7 +45,7 @@ app.get('/api/carShip/:id', function(req, res){
 //gets a score
 app.get('/api/score/:id', function(req, res){
 	var scoreID = req.params.id;
-	db.score.findOne({_id : scoreID}, function(err, foundScore){
+	db.Score.findOne({_id : scoreID}, function(err, foundScore){
 		if(err){ return console.log("index error: " + err)}
 			res.json(foundScore);
 	});
@@ -63,9 +63,20 @@ app.post('/api/carShip', function(req, res){
 //creates a score
 app.post('/api/score', function(req, res){
 	var score = req.body;
-	db.score.create(score, function(err, newscore){
+	db.Score.create(score, function(err, newscore){
 		if(err){ return console.log("index error: " + err)}
 			res.json(newscore);
+	});
+});
+
+app.put('/api/carShip/:id', function(req, res){
+	var updateCarShip = req.params.id;
+	db.CarShip.findOne({_id: updateCarShip}, function(err, foundCarShip){
+		foundCarShip.name = req.body.name;
+		foundCarShip.color = req.body.color;
+		foundCarShip.speedValue = req.body.speedValue;
+
+		foundCarShip.save(function(err, saveCarShip))
 	});
 });
 
