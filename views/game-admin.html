@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>carShip admin page</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/admin.css">
+
+
+   <!-- VENDOR SCRIPTS -->
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+   <!-- APPLICATION SCRIPTS -->
+   <script src="/scripts/game.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 jumbotron">
+          <h1 class="text-center">Admin page</h1>
+          <h2 class="text-center">create, edit, or delete carShips</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+          <form>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="name">carShip Name</label>
+              <div class="col-md-4">
+                <input id="carName" name="carShipname" type="text" placeholder="" class="form-control input-md" required="">
+              </div>
+            </div>
+
+                        <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="artistName">carShip Color</label>
+              <div class="col-md-4">
+                <input id="carColor" name="carShipColor" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+                        <!-- number input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="releaseDate">Max Speed</label>
+              <div class="col-md-4">
+                <input id="speedValue" name="Speed" type="number" placeholder="How fast?" class="form-control input-md">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
