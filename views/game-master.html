@@ -20,36 +20,43 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 jumbotron">
-          <h1 class="text-center">CarShip Racer Game!!!</h1>
-          <h2 class="text-center">It's so fast!!!</h2>
+          <h1 class="text-center">CarShip Space Race</h1>
+          <h2 class="text-center">It's outta of this world</h2>
         </div>
       </div>
     </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-6 col-md-offset-3">
           <form id="raceGame">
-            <select id="gameCarChoice">
+            <select class="col-md-offset-4" id="gameCarChoice">
               <option>Green Car</option>
               <option>Red Car</option>
               <option>Blue Car</option>
-              <option>Yellow Car</option>
-              <option>Brown Car</option>
             </select>
-            <input id="score" type="number" name="score" min="5" max= "5" value="5" required>
-            <p>To find out your race score, click this button.</p>
-              <button type="submit" class="btn btn-default">Complete a race!</button>
+            <input id="score" type="number" name="score" min="1" max= "10" value="5" required>
+            <hr>
+            <h4 class="text-center">To find out your race score, click this button.</h4>
+              <button type="submit" class="btn btn-default text-center col-md-offset-4">Complete a race!</button>
           </form>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div>
-        <h3>Recent Scores</h3>
-        <ul id="scoreList">
-        </ul>
+    <br>
+    <div class="row">
+      <div class="container-fluid">
+        <div class="thumbnail col-md-12 track">
+            <div class="col-md-1" id="carShip">
+              <h1><img id="carShip" class="img-responsive" src="../images/Car_Red.png"></h1>
+            </div>
+        </div>
       </div>
+    </div>
+      <br>
+    <div class="col-md-6 col-md-offset-3 container thumbnail text-center">
+        <h2>Recent Scores</h2><hr>
+        <ol id="scoreList"></ol>
     </div>
 
   </body>

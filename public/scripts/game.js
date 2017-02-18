@@ -16,13 +16,13 @@ $(document).ready(function(){
 
 function onSuccessScore(responseData){
 	responseData.forEach(function(value, index){
-		$('#scoreList').append(`<li>Name:${value.name}		Score: ${value.score}</li>`);
+		$('#scoreList').append(`<li><h4>Name: ${value.name}	Score: ${value.score}</h4></li><hr>`);
 	});
 }
 
 function onSuccessPostScore(responseData){
 	console.log(responseData);
-	$('#scoreList').append(`<li>Name:${responseData.name}		Score: ${responseData.score}</li>`);
+	$('#scoreList').append(`<li><h4>Name: ${responseData.name}	Score: ${responseData.score}</h4></li>`);
 }
 
 function submit(){
