@@ -10,7 +10,7 @@ $(document).ready(function() {
     error: errorCars
 	});
 
-  $("#singlebutton").on("submit", function(event) {
+  $("#newcarShipForm").on("submit", function(event) {
     event.preventDefault();
     var formData = $(this).serialize();
     debugger;
@@ -22,13 +22,16 @@ $(document).ready(function() {
     $(this).trigger("reset");
   });
 
+  //Catch delete button click
+  $("#carList").on("click", ".deleteBtn", handleDeletecarShip);
+
 //end of ready
 })
 
 //All carShips
-function onSuccessCars(carResponses) {
-  carResponses.forEach(function(carResponse) {
-    rendercarShip(carShip);
+function onSuccessCars(carShips) {
+  carShips.forEach(function(carShips) {
+    rendercarShip(carShips);
   });
 }
 
@@ -43,12 +46,33 @@ function NewCarSuccess(json) {
 }
 
 
-function rendercarShip(carShip) {
-  console.log("carShip html", carShip)
+function rendercarShip(carShips) {
+  console.log("carShip html:", carShips)
   var carShipHtml = (`
-    <li>carShip Name: ${value.name} | carShip Color: ${value.color} | carShip Speed: ${value.speedValue} |
-       <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id="${this._id}">Delete</button>
-    </li>
+
+      <div class="row text-center carShip" data-carShips-id="${carShips._id}">
+        <button type="button" name="button" class="updateBtn btn btn-success pull-left" data-id="${this._id}">Update</button>
+        carShip Name: ${carShips.name} | carShip Color: ${carShips.color} | carShip Speed: ${carShips.speedValue} |
+        <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id="${this._id}">Delete</button>
+      </div
+
     `);
   $("#carList").append(carShipHtml);
 };
+
+//Delete carShip
+function handleDeletecarShip(event) {
+  var carShipId = $(this).parent("row.text-center.carShip").data("id");
+  console.log("Deleting carShipId=" + carShipId);
+  $.ajax({
+    method: "DELETE",
+    url: "api/carShip/" + carShipId,
+    success: deletecarShipSuccess
+  });
+};
+
+function deletecarShipSuccess(data) {
+  var deletedcarShipId = data._id;
+  console.log("removing this from page:", deletedcarShipId);
+  $("div[data-carShips-id=" + deletedcarShipId + "]").remove();
+}

@@ -1,3 +1,14 @@
 body {
   background-color: #5c72ac;
 }
+
+#carList {
+  padding: 0px;
+}
+
+div.row.text-center {
+  background-color: grey;
+  border: solid;
+  border-width: 2px;
+  margin: 5px 0px 0px 0px;
+}
