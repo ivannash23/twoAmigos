@@ -1,0 +1,26 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "description": "This game has been built as a full-stack web project, using HTML/CSS/JS elements that are communicating with and Express based Node.js framework, that is in turn interacting with a MongoDB database utilizing Mongoose library to store and manipulate persistent user created data.",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivannash23/twoAmigos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivannash23/twoAmigos/issues"
+  },
+  "homepage": "https://github.com/ivannash23/twoAmigos#readme"
+}
