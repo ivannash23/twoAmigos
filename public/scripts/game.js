@@ -14,6 +14,7 @@ $(document).ready(function(){
 		location.reload();
 	});
 
+
 });
 
 
@@ -21,12 +22,13 @@ function onSuccessScore(responseData){
 	var byScore = responseData.slice(0);
 	var highScorePrint = byScore.sort(function(a,b) {return b.score - a.score;});
 	highScorePrint.forEach(function(value, index){
-		$('#scoreList').append(`<li><h4>Name: ${value.name}	Score: ${value.score}</h4></li><hr>`);
+		$('#scoreList').append(`<li><h4>Name: ${value.name}<br>Score: ${value.score}</h4></li><hr>`);
 	});
 };
 
 function onSuccessPostScore(responseData){
-	$('#scoreList').append(`<li><h4>Name: ${responseData.name}	Score: ${responseData.score}</h4></li>`);
+	$('#scoreList').append(`<li><h4>Name: ${responseData.name}<br>	Score: ${responseData.score}</h4></li>`);
+	location.reload();
 };
 
 function pickCarShip(){
@@ -44,6 +46,8 @@ function pickCarShip(){
 
 function onSuccessCarShipPick(responseData){
 	$('#startGame').on('click', function(e){
+		$('#music').empty();
+		$('#music').append(`<audio controls autoplay><source src="/scripts/TopGear.mp3"></audio>`);
 
 		var t1= Date.now();
 		var t2;
@@ -74,6 +78,7 @@ function onSuccessCarShipPick(responseData){
 						data: `name=${name}&score=${highScore}` ,
 						success: onSuccessPostScore
 					});
+					$('span').empty();
   				$('span').append(`<button class="col-md-2 col-md-offset-5 btn btn-danger"><h2>Game Over</h2></button>`);
 	  		};
 	  	};

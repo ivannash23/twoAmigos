@@ -20,8 +20,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 jumbotron">
-          <h1 class="text-center">CarShip Space Race</h1>
-          <h2 class="text-center">It's outta of this world</h2>
+          <h1 class="text-center">CarShip Space Race</h1><hr>
+          <h4>Instructions: </h4><p>To play this amazing game you first need to pick a carShip.</p>
+          <p>Each car has a different speed, so try them all!</p>
+          <p>After pressing "Start Game" a letter will appear on the screen, in order to move your carShip you need to press that letter on your keyboard</p>
+          <br>
+          <p>Good Luck!</p>
+          <div id="music"></div>
         </div>
       </div>
     </div>
@@ -38,26 +43,27 @@
           </form>
       </div>
     </div>
-    <br><span></span>
+    <br>
+    <span></span>
     <div class="row">
       <div class="container-fluid">
         <div class="thumbnail col-md-12 track">
             <div class="col-md-1" id="carShip">
-              <img id="carShip" class="img-responsive" src="../images/Car_Green.png">
+              <img id="carShip" class="img-responsive" src="">
             </div>
         </div>
       </div>
     </div>
+    <h3>
       <br>
       <div class="row">
           <button id="startGame" class="col-md-4 col-md-offset-4 btn btn-primary">Start Game</button>
           <button id="resetGame" class="col-md-4 col-md-offset-4 btn btn-warning">Reset Game</button>
       </div>
       <br>
-    <div class="col-md-6 col-md-offset-3 container thumbnail text-center">
-        <h2>Recent Scores</h2><hr>
+    <div class="col-md-2 col-md-offset-5 container thumbnail">
+        <h2 class="text-center">HighScores</h2><hr>
         <ol id="scoreList"></ol>
     </div>
-
   </body>
 </html>
