@@ -55,9 +55,9 @@ app.get('/api/score', function(req, res){
 });
 
 //gets a carShip
-app.get('/api/carShip/:id', function(req, res){
-	var carShipID = req.params.id;
-	db.CarShip.findOne({_id : carShipID}, function(err, foundCarShip){
+app.get('/api/carShip/:color', function(req, res){
+	var carShipColor = req.params.color;
+	db.CarShip.findOne({color : carShipColor}, function(err, foundCarShip){
 		if(err){ return console.log("index error: " + err)}
 			res.json(foundCarShip);
 	});
