@@ -67,7 +67,6 @@ function onSuccessCarShipPick(responseData){
 	  		charKey = Math.round(Math.random() * (90 - 65) + 65);
 	  		char = String.fromCharCode(charKey);
 	  		$('span').append(`<button class="col-md-2 col-md-offset-5 btn btn-danger"><h2>${char}</h2></button>`);
-	  		console.log(marginLeft);
 	  		if(marginLeft > 1260){
 	  			t2 = Date.now();
 	  			var highScore = ( (t2-t1) - score) * -1;
