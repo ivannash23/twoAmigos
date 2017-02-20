@@ -24,6 +24,8 @@ $(document).ready(function() {
   //Catch delete button click
   $("#carList").on("click", ".delete-carShip", handleDeletecarShip);
 
+  //Catch update button click
+  // $("#carList").on("click", ".update-carShip", handleUpdatecarShip);
 //end of ready
 })
 
@@ -50,7 +52,7 @@ function rendercarShip(carShips) {
   var carShipHtml = (`
 
       <div class="row text-center carShip" data-carShips-id="${carShips._id}">
-        <button type="button" name="button" class="updateBtn btn btn-success pull-left" >Update</button>
+        <button class='btn btn-success update-carShip pull-left'>Update</button>
         carShip Name: ${carShips.name} | carShip Color: ${carShips.color} | carShip Speed: ${carShips.speedValue} |
         <button class='btn btn-danger delete-carShip pull-right'>Delete</button>
       </div>
@@ -61,18 +63,23 @@ function rendercarShip(carShips) {
 
 //Delete carShip - buggy
 function handleDeletecarShip(event) {
-  var carShipId = $(this).closest(".carShip").data();
-  console.log("Deleting carShipId= " + carShipId._id);
-  debugger;
+  var carShipId = $(this).closest(".carShip").data("carshipsId");
+  console.log("Deleting carShipId= " + carShipId);
   $.ajax({
     method: "DELETE",
-    url: "api/carShip/" + carShipId._id,
+    url: "api/carShip/" + carShipId,
     success: deletecarShipSuccess
   });
 };
 
 function deletecarShipSuccess(data) {
+  debugger;
   var deletedcarShipId = data._id;
   console.log("removing this from page:", deletedcarShipId);
   $("div[data-carShips-id=" + deletedcarShipId + "]").remove();
 }
+
+//update carShip
+//function handleUpdatecarShip() {
+//   console.log('stuff');
+// }
