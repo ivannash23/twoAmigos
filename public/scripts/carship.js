@@ -62,8 +62,8 @@ function rendercarShip(carShips) {
 
 //Delete carShip
 function handleDeletecarShip(event) {
-  var carShipId = $(this).parent("row.text-center.carShip").data("id");
-  console.log("Deleting carShipId=" + carShipId);
+  var carShipId = $(this).parents(".carShip").data("carShips-id");
+  console.log("Deleting carShipId= " + carShipId);
   $.ajax({
     method: "DELETE",
     url: "api/carShip/" + carShipId,
