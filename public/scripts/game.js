@@ -6,6 +6,15 @@ $(document).ready(function(){
 		success: onSuccessScore
 	});
 
+	$('#gameCarChoice').on('change', function(){
+		pickCarShip();
+	});
+
+	$('#resetGame').on('click', function(){
+		location.reload();
+
+	});
+
 
 	$('#startGame').on('click', function(e){
 
@@ -49,7 +58,9 @@ $(document).ready(function(){
 });
 
 function onSuccessScore(responseData){
-	responseData.forEach(function(value, index){
+	var byScore = responseData.slice(0);
+	var highScorePrint = byScore.sort(function(a,b) {return b.score - a.score;});
+	highScorePrint.forEach(function(value, index){
 		$('#scoreList').append(`<li><h4>Name: ${value.name}	Score: ${value.score}</h4></li><hr>`);
 	});
 };
@@ -60,7 +71,8 @@ function onSuccessPostScore(responseData){
 };
 
 function pickCarShip(){
-
+	var carColor = $('#gameCarChoice').val().split(" ");
+	$('img').attr('src', `/images/Car_${carColor[0]}.png`);
 };
 
 
