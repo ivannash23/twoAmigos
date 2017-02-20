@@ -1,10 +1,8 @@
 body {
-  /*background-image: #5c72ac;*/
   background-image: url(https://media.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif);
   background-size: cover;
 }
 
-/* possible BG http://gph.is/1PEf55I */
 #carList {
   padding: 0px;
 }
@@ -14,4 +12,29 @@ div.row.text-center {
   border: solid;
   border-width: 2px;
   margin: 5px 0px 0px 0px;
+}
+
+h5 {
+  text-transform: uppercase;
+}
+
+li.list.group.item {
+  background-color: white;
+  margin: auto 20px;
+  border: solid;
+  border-color: black;
+  border-radius: 10px;
+}
+
+ul.list.group {
+  padding: 0px;
+}
+
+button.btn.btn-success.update-carShip {
+  margin-bottom: 15px;
+}
+
+div.panel-footer {
+  background-color: grey;
+  border: none
 }

@@ -25,7 +25,10 @@ $(document).ready(function() {
   $("#carList").on("click", ".delete-carShip", handleDeletecarShip);
 
   //Catch update button click
-  // $("#carList").on("click", ".update-carShip", handleUpdatecarShip);
+  $("#carList").on("click", ".update-carShip", handleUpdatecarShip);
+
+  //Catch
+  $("#carList").on("click", ".save-carShip", handleSavecarShip);
 //end of ready
 })
 
@@ -51,17 +54,38 @@ function rendercarShip(carShips) {
   console.log("carShip html:", carShips)
   var carShipHtml = (`
 
-      <div class="row text-center carShip" data-carShips-id="${carShips._id}">
-        <button class='btn btn-success update-carShip pull-left'>Update</button>
-        carShip Name: ${carShips.name} | carShip Color: ${carShips.color} | carShip Speed: ${carShips.speedValue} |
-        <button class='btn btn-danger delete-carShip pull-right'>Delete</button>
+      <div class="row text-center col-md-3 col-xs-12 carShip" data-carShips-id="${carShips._id}">
+        </br>
+
+          <ul class="list group">
+            <li class="list group item">
+              <h5 class="inline-header">carShip Name:</h5>
+              <span class="carShip-name">${carShips.name}</span>
+            </li>
+            <li class="list group item">
+              <h5 class="inline-header">carShip Color:</h5>
+              <span class="carShip-color">${carShips.color}</span>
+            </li>
+            <li class="list group item">
+              <h5 class="inline-header">carShip Speed:</h5>
+              <span class="carShip-speedValue">${carShips.speedValue}</span>
+            </li>
+          </ul></br>
+
+        <div class='panel-footer'>
+              <div class='panel-footer'>
+                <button class='btn btn-danger delete-carShip'>Delete</button>
+                <button class='btn btn-info update-carShip'>Update</button>
+                <button class='btn btn-success save-carShip hidden'>Save Changes</button>
+              </div>
+            </div>
       </div>
 
     `);
   $("#carList").append(carShipHtml);
 };
 
-//Delete carShip - buggy
+//Delete carShip
 function handleDeletecarShip(event) {
   var carShipId = $(this).closest(".carShip").data("carshipsId");
   console.log("Deleting carShipId= " + carShipId);
@@ -73,13 +97,59 @@ function handleDeletecarShip(event) {
 };
 
 function deletecarShipSuccess(data) {
-  debugger;
   var deletedcarShipId = data._id;
   console.log("removing this from page:", deletedcarShipId);
   $("div[data-carShips-id=" + deletedcarShipId + "]").remove();
 }
 
-//update carShip
-//function handleUpdatecarShip() {
-//   console.log('stuff');
-// }
+//update carShip field set-up functions
+function handleUpdatecarShip() {
+  var $carShipItem = $(this).closest(".carShip");
+  var carShipId = $carShipItem.data("carshipsId");
+  console.log("Update carShip", carShipId);
+
+  //button toggles
+  $carShipItem.find(".save-carShip").toggleClass("hidden");
+  $carShipItem.find(".update-carShip").toggleClass("hidden");
+
+  //text field replacement - carShip name
+  var carShipName = $carShipItem.find("span.carShip-name").text();
+  $carShipItem.find("span.carShip-name").html(`<input class="update-carShip-name" value="ENTER NEW NAME" ></input>`)
+
+  //text field replacement - carShip color
+  var carShipName = $carShipItem.find("span.carShip-color").text();
+  $carShipItem.find("span.carShip-color").html(`<input class="update-carShip-color" value="ENTER NEW COLOR" ></input>`)
+
+  //text field replacement - carShip speedValue
+  var carShipName = $carShipItem.find("span.carShip-speedValue").text();
+  $carShipItem.find("span.carShip-speedValue").html(`<input type="number" class="update-carShip-speedValue" value="1" ></input>`)
+}
+
+//update carShip save functions
+function handleSavecarShip(event) {
+  var carShipId = $(this).closest(".carShip").data("carshipsId");
+  var $carShipItem = $(this).closest(".carShip");
+  var data = {
+    name: $carShipItem.find(".update-carShip-name").val(),
+    color: $carShipItem.find(".update-carShip-color").val(),
+    speedValue: $carShipItem.find(".update-carShip-speedValue").val()
+  };
+  console.log("PUT data for ", carShipId, "with data", data);
+  debugger;
+  $.ajax({
+    method: "PUT",
+    url: "/api/carShip/" + carShipId,
+    data: data,
+    success: handleSavescarShipResponse
+  });
+}
+
+function handleSavescarShipResponse(data) {
+  console.log("AJAX PUT response", data);
+
+//page render the updated carShip
+  var carShipId = data._id;
+  $(this).closest(".carShip").remove();
+  rendercarShip(data);
+
+}

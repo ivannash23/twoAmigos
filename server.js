@@ -101,8 +101,9 @@ app.put('/api/carShip/:id', function(req, res){
 		foundCarShip.color = req.body.color;
 		foundCarShip.speedValue = req.body.speedValue;
 
-		foundCarShip.save(function(err, saveCarShip){});
+		foundCarShip.save(function(err, saveCarShip){
 			res.json(saveCarShip);
+      });
 	});
 });
 
