@@ -45,6 +45,7 @@ function pickCarShip(){
 };
 
 function onSuccessCarShipPick(responseData){
+	console.log(esponseData.speedValue);
 	$('#startGame').on('click', function(e){
 		$('#music').empty();
 		$('#music').append(`<audio controls autoplay><source src="/scripts/TopGear.mp3"></audio>`);
