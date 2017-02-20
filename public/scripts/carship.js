@@ -10,10 +10,9 @@ $(document).ready(function() {
     error: errorCars
 	});
 
-  $("#newcarShipForm").on("submit", function(event) {
-    event.preventDefault();
+  $("#newcarShipForm").on("submit", function(e) {
+    e.preventDefault();
     var formData = $(this).serialize();
-    debugger;
     console.log("formData", formData);
     $.post("api/carShip/", formData, function(carShip) {
       console.log("carShip after POST", carShip);
@@ -23,7 +22,7 @@ $(document).ready(function() {
   });
 
   //Catch delete button click
-  $("#carList").on("click", ".deleteBtn", handleDeletecarShip);
+  $("#carList").on("click", ".delete-carShip", handleDeletecarShip);
 
 //end of ready
 })
@@ -51,19 +50,20 @@ function rendercarShip(carShips) {
   var carShipHtml = (`
 
       <div class="row text-center carShip" data-carShips-id="${carShips._id}">
-        <button type="button" name="button" class="updateBtn btn btn-success pull-left" data-id="${this._id}">Update</button>
+        <button type="button" name="button" class="updateBtn btn btn-success pull-left" >Update</button>
         carShip Name: ${carShips.name} | carShip Color: ${carShips.color} | carShip Speed: ${carShips.speedValue} |
-        <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id="${this._id}">Delete</button>
-      </div
+        <button class='btn btn-danger delete-carShip pull-right'>Delete</button>
+      </div>
 
     `);
   $("#carList").append(carShipHtml);
 };
 
-//Delete carShip
+//Delete carShip - buggy
 function handleDeletecarShip(event) {
-  var carShipId = $(this).parents(".carShip").data("carShips-id");
-  console.log("Deleting carShipId= " + carShipId);
+  var carShipId = $(this).closest(".carShip").data();
+  console.log("Deleting carShipId= " + carShipId.carShipsid);
+  debugger;
   $.ajax({
     method: "DELETE",
     url: "api/carShip/" + carShipId,
