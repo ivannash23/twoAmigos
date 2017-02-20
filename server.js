@@ -17,6 +17,10 @@ app.get('/', function homepage(req, res) {
   res.sendFile('/views/game-master.html' , { root : __dirname});
 });
 
+app.get('/admin', function homepage(req, res) {
+  res.sendFile('/views/game-admin.html' , { root : __dirname});
+});
+
 //profile
 app.get('/api/profile', function(req, res){
 	res.send([
@@ -27,7 +31,7 @@ app.get('/api/profile', function(req, res){
 		personalSiteLink: "https://chri-roch12.github.io",
 		currentCity: "Berkeley, CA"
 		},
-		{	
+		{
 		name: "Ivan Miranda",
 		githubLink:"https://github.com/ivannash23",
 		githubProfileImage: "https://avatars2.githubusercontent.com/u/17952194?v=3&s=460",
@@ -97,8 +101,9 @@ app.put('/api/carShip/:id', function(req, res){
 		foundCarShip.color = req.body.color;
 		foundCarShip.speedValue = req.body.speedValue;
 
-		foundCarShip.save(function(err, saveCarShip){});
+		foundCarShip.save(function(err, saveCarShip){
 			res.json(saveCarShip);
+      });
 	});
 });
 
@@ -148,4 +153,3 @@ app.get('/api', function apiIndex(req, res){
 app.listen(process.env.PORT || 3000, function () {
   console.log('Express server is up and running on http://localhost:3000/');
 });
-
