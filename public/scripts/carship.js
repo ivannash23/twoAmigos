@@ -62,11 +62,11 @@ function rendercarShip(carShips) {
 //Delete carShip - buggy
 function handleDeletecarShip(event) {
   var carShipId = $(this).closest(".carShip").data();
-  console.log("Deleting carShipId= " + carShipId.carShipsid);
+  console.log("Deleting carShipId= " + carShipId._id);
   debugger;
   $.ajax({
     method: "DELETE",
-    url: "api/carShip/" + carShipId,
+    url: "api/carShip/" + carShipId._id,
     success: deletecarShipSuccess
   });
 };

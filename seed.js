@@ -4,6 +4,21 @@ var db = require("./models");
 
 var carShipList =[
   {
+  name: "Car1",
+  color: "red",
+  speedValue: 5,
+  },
+  {
+  name: "Car2",
+  color: "green",
+  speedValue: 7,
+  },
+  {
+  name: "Car3",
+  color: "blue",
+  speedValue: 3,
+  },
+  {
     name: "Radical carShip",
     color: "Green",
     speedValue: 4
@@ -31,7 +46,7 @@ db.CarShip.remove({}, function(err, carShips) {
       return console.log("Error seed!", err);
     }
       console.log("Seeded carShips:", carShips);
-      console.log("Created 4 =", carShips.length, "carShips?");
+      console.log("Created =", carShips.length, "carShips?");
       process.exit();
   });
 });
