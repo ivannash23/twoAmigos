@@ -28,31 +28,30 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
           <form id="raceGame">
-            <select class="col-md-offset-4" id="gameCarChoice">
+            <select class="col-md-2 col-md-offset-5" id="gameCarChoice">
               <option>Green Car</option>
               <option>Red Car</option>
               <option>Blue Car</option>
             </select>
-            <input id="score" type="number" name="score" min="1" max= "10" value="5" required>
-            <hr>
-            <h4 class="text-center">To find out your race score, click this button.</h4>
-              <button type="submit" class="btn btn-default text-center col-md-offset-4">Complete a race!</button>
           </form>
-        </div>
       </div>
     </div>
-    <br>
+    <br><span id="keyToPress"></span>
     <div class="row">
       <div class="container-fluid">
         <div class="thumbnail col-md-12 track">
             <div class="col-md-1" id="carShip">
-              <h1><img id="carShip" class="img-responsive" src="../images/Car_Red.png"></h1>
+              <img id="carShip" class="img-responsive" src="../images/Car_Red.png">
             </div>
         </div>
       </div>
     </div>
+      <br>
+      <div class="row">
+          <button id="startGame" class="col-md-4 col-md-offset-4 btn btn-primary">Start Game</button>
+          <button id="startGame" class="col-md-4 col-md-offset-4 btn btn-warning">Reset Game</button>
+      </div>
       <br>
     <div class="col-md-6 col-md-offset-3 container thumbnail text-center">
         <h2>Recent Scores</h2><hr>

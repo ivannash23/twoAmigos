@@ -2,14 +2,6 @@ body {
   background-image: url(https://media.giphy.com/media/wjG3ZJFP71Z16/giphy.gif);
 }
 
-#raceGame {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: solid;
-  border-color: white;
-  background-color: grey;
-}
-
 #carShip{
   margin-top: 165px;
 }
