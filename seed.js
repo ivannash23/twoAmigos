@@ -1,5 +1,4 @@
 
-
 var db = require("./models");
 
 var carShipList =[
@@ -37,6 +36,7 @@ var carShipList =[
     name: "Gnarly carShip",
     color: "Yellow",
     speedValue: 5
+
   }
 ];
 
@@ -46,7 +46,9 @@ db.CarShip.remove({}, function(err, carShips) {
       return console.log("Error seed!", err);
     }
       console.log("Seeded carShips:", carShips);
+
       console.log("Created =", carShips.length, "carShips?");
       process.exit();
   });
 });
+

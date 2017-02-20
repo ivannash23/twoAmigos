@@ -1,4 +1,4 @@
-# ${1: carShip Racer Game}
+# CarShip Space Race
 
 This game has been built as a full-stack web project, using HTML/CSS/JS elements that are communicating with and Express based Node.js framework, that is in turn interacting with a MongoDB database utilizing Mongoose library to store and manipulate persistent user created data.
 

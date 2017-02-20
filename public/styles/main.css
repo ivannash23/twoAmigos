@@ -1,21 +1,20 @@
 body {
-  background-color: #8c92ac;
+  background-image: url(https://media.giphy.com/media/wjG3ZJFP71Z16/giphy.gif);
 }
 
-container {
-  background-color: red;
-}
-#raceGame {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: solid;
-  border-color: white;
-  background-color: grey;
+#carShip{
+  margin-top: 165px;
 }
 
-h2 {
-  color: grey;
-  margin: 5px;
+.track{
+  background-image: url(http://i.imgur.com/xChy58V.png);
+  border: 2px solid white;
+  height: 400px;
+  background-size: 100% 100%;
+}
+
+h2,h3,h4 {
+  color: black;
 }
 
 .jumbotron {
