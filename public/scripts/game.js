@@ -72,7 +72,8 @@ function onSuccessCarShipPick(responseData){
 	  			var highScore = ( (t2-t1) - score) * -1;
   				var name = window.prompt(`What's your name?`);
   				if(name.length < 2){
-  					name = "Ricky Bobby";
+  					var nameArr = ["Ricky Bobby", "Lighting Mcqueen", "Turbo"];
+  					name = nameArr[Math.round((Math.random() * 3) + 0)];
   				}
   				if(highScore < 0){
   					highScore = 0;
