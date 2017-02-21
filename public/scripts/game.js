@@ -67,10 +67,16 @@ function onSuccessCarShipPick(responseData){
 	  		charKey = Math.round(Math.random() * (90 - 65) + 65);
 	  		char = String.fromCharCode(charKey);
 	  		$('span').append(`<button class="col-md-2 col-md-offset-5 btn btn-danger"><h2>${char}</h2></button>`);
-	  		if(marginLeft > 1260){
+	  		if(marginLeft > ($('.track').width()- 150)){
 	  			t2 = Date.now();
 	  			var highScore = ( (t2-t1) - score) * -1;
   				var name = window.prompt(`What's your name?`);
+  				if(name.length < 2){
+  					name = "Ricky Bobby";
+  				}
+  				if(highScore < 0){
+  					highScore = 0;
+  				}
   				$.ajax({
 						method: 'POST',
 						url: '/api/score',
