@@ -12,9 +12,13 @@ Endpoints are located in the server.js file.
 
 ## Usage
 
+![alt text](public/images/screen_shot_2017-02-21b.png "Gameplay page")
+
 This game will allow users to select a car, and then "race" it. When a race is submitted, a score is generated based in part on the carShip selected. The user will be able to add their name to their final score, and that score will be added to a list of persistent scores.
 
-The game master page will allow an administrator to create new carShips, and assign the cars new values to how the car will affect the racer's score. These cars will be saved and displayed on a list. That list will also allow the administrator to update/change existing cars, or delete car versions.
+![alt text](public/images/screen_shot_2017-02-21a.png "Admin page")
+
+The game admin page will allow an administrator to create new carShips, and assign the cars new values to how the car will affect the racer's score. These cars will be saved and displayed on a list. That list will also allow the administrator to update/change existing cars, or delete car versions.
 
 ## Contributing
 
